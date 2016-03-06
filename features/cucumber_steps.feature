@@ -17,31 +17,43 @@ Feature: Cucumber Steps
       Then the page should be accessible
       """
     When I run `cucumber`
-    Then the features should all pass
+    Then it should fail with:
+      """
+      Found 4 accessibility violations
+      """
 
-  # Scenario: Negated Step
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should not be accessible
-  #     """
-  #   Then the feature should pass
+  Scenario: Negated Step
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should not be accessible
+      """
+    When I run `cucumber`
+    Then the feature should pass
 
-  # Scenario: Inclusion Clause
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should be accessible within "#selector"
-  #     """
-  #   Then the feature should pass
+  Scenario: Inclusion Clause
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should be accessible within "#header"
+      """
+    When I run `cucumber`
+    Then it should fail with:
+      """
+      Found 1 accessibility violation
+      """
 
-  # Scenario: Exclusion Clause
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should be accessible excluding "#selector"
-  #     """
-  #   Then the feature should pass
+  Scenario: Exclusion Clause
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should be accessible excluding "#topbar"
+      """
+    When I run `cucumber`
+    Then it should fail with:
+      """
+      Found 3 accessibility violations
+      """
 
   # Scenario: Accessibility Standard (Tag) Clause
   #   Given a feature file with:
