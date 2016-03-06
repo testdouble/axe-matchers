@@ -13,3 +13,9 @@ end
 Then "there should be $n accessibility violations" do |violations|
   expect { expect(@page).to be_accessible }.to raise_error(/Found #{violations} accessibility violations/)
 end
+
+Given "a scenario like:" do |string|
+  create_feature {
+    create_scenario { string }
+  }
+end
