@@ -55,13 +55,14 @@ Feature: Cucumber Steps
       Found 3 accessibility violations
       """
 
-  # Scenario: Accessibility Standard (Tag) Clause
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should be accessible according to: tag-name
-  #     """
-  #   Then the feature should pass
+  Scenario: Accessibility Standard (Tag) Clause
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should be accessible according to: wcag2aaa
+      """
+    When I run `cucumber`
+    Then the feature should pass
 
   # Scenario: Checking Rules Clause
   #   Given a feature file with:
