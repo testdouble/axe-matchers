@@ -64,13 +64,17 @@ Feature: Cucumber Steps
     When I run `cucumber`
     Then the feature should pass
 
-  # Scenario: Checking Rules Clause
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should be accessible checking: ruleId
-  #     """
-  #   Then the feature should pass
+  Scenario: Checking Rules Clause
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should be accessible checking: heading-order
+      """
+    When I run `cucumber`
+    Then it should fail with:
+      """
+      Found 5 accessibility violations
+      """
 
   # Scenario: Exclusive Rules Clause
   #   Given a feature file with:
