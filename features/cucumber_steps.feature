@@ -100,13 +100,14 @@ Feature: Cucumber Steps
       Found 3 accessibility violations
       """
 
-  # Scenario: Compound Example with punctuation
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should be accessible excluding "#sidebar" according to: wcag2a, wcag2aa but skipping: color-contrast
-  #     """
-  #   Then the feature should pass
+  Scenario: Compound Example with punctuation
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should be accessible within "#wrapper"; excluding "#header" according to: wcag2a, wcag2aa
+      """
+    When I run `cucumber`
+    Then the feature should pass
 
   # Scenario: Compound Example with conjunctions
   #   Given a feature file with:
