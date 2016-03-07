@@ -88,13 +88,17 @@ Feature: Cucumber Steps
       Found 1 accessibility violation
       """
 
-  # Scenario: Skipping Rules Clause
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should be accessible skipping: ruleId
-  #     """
-  #   Then the feature should pass
+  Scenario: Skipping Rules Clause
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should be accessible skipping: color-contrast
+      """
+    When I run `cucumber`
+    Then it should fail with:
+      """
+      Found 3 accessibility violations
+      """
 
   # Scenario: Compound Example with punctuation
   #   Given a feature file with:
