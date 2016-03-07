@@ -109,10 +109,11 @@ Feature: Cucumber Steps
     When I run `cucumber`
     Then the feature should pass
 
-  # Scenario: Compound Example with conjunctions
-  #   Given a feature file with:
-  #     """gherkin
-  #     Given I visit http://abcdcomputech.dequecloud.com
-  #     Then the page should be accessible excluding "#sidebar"; according to: wcag2a, wcag2aa; skipping: color-contrast
-  #     """
-  #   Then the feature should pass
+  Scenario: Compound Example with conjunctions
+    Given a scenario like:
+      """gherkin
+      Given I visit http://abcdcomputech.dequecloud.com
+      Then the page should be accessible within "#wrapper" but excluding "#header" according to: wcag2a, wcag2aa
+      """
+    When I run `cucumber`
+    Then the feature should pass
