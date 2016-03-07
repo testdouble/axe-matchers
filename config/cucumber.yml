@@ -3,9 +3,9 @@
 default: -p capybara -p webkit
 
 # drivers
-capybara: DRIVER=capybara
-selenium: DRIVER=selenium
-watir: DRIVER=watir
+capybara: DRIVER=capybara --exclude features/fixtures/selenium --exclude features/fixtures/watir
+selenium: DRIVER=selenium --exclude features/fixtures/capybara --exclude features/fixtures/watir
+watir: DRIVER=watir --exclude features/fixtures/capybara --exclude features/fixtures/selenium
 
 # browser
 webkit: BROWSER=webkit
