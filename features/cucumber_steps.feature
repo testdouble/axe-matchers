@@ -7,9 +7,6 @@ Feature: Cucumber Steps
 
       Then the page should be accessible [including] [excluding] [according-to] [checking-rules/checking-only-rules] [skipping-rules]
 
-  Background:
-    Given I use a fixture named "capybara"
-
   Scenario: Base Step
     Given a scenario like:
       """gherkin
