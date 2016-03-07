@@ -1,0 +1,16 @@
+---
+# default
+default: -p capybara -p webkit
+
+# drivers
+capybara: DRIVER=capybara
+selenium: DRIVER=selenium
+watir: DRIVER=watir
+
+# browser
+webkit: BROWSER=webkit
+poltergeist: BROWSER=poltergeist
+firefox: BROWSER=firefox
+chrome: BROWSER=chrome
+safari: BROWSER=safari
+phantomjs: BROWSER=phantomjs
